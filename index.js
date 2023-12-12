@@ -24,7 +24,6 @@ app.post('/upload', upload.single('file'), async (req, res) => {
     // Remove the first row as it is not required
     rows.shift();
 
-    // Headers for the result
     const headers = [
       'Pymt_Mode',
       'File_Sequence_Num',
@@ -42,7 +41,7 @@ app.post('/upload', upload.single('file'), async (req, res) => {
 
     // Split each row into a list of columns
     rows = rows.map(row => {
-        const beneficiaryNameEnd = row.slice(24).search(/\d/); // Find the position of the next number
+        const beneficiaryNameEnd = row.slice(24).search(/\d/);
         const beneficiaryNameLength =
           beneficiaryNameEnd > 0 ? beneficiaryNameEnd : row.slice(24).length;
       
